@@ -13,6 +13,8 @@ Front-end:
 * Framework Flaks
 * Python
 
+## Acesse o projeto no site em: https://sistemadegerenciamentodenotas.netlify.app/ 
+
 
 📸 Demostração
 ![alt text](Demo-1.png)
