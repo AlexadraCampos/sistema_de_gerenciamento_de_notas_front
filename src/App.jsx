@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Login from './pages/login.jsx';
 import "./styles/app.css";
 
 
@@ -7,7 +8,7 @@ function App() {
   const [alunos, setAlunos] = useState([]);
   const [materias, setMaterias] = useState(["", "", "", "", ""]);
   const [formData, setFormData] = useState({
-    id: 1,
+    id: "",
     nome: "",
     notas: ["", "", "", "", ""],
     frequencia: "",
@@ -16,9 +17,12 @@ function App() {
   const [alerta, setAlerta] = useState("");
   const [sucesso, setSucesso] = useState("");
 
+
+  
+
   // Carregar alunos + disciplinas
   useEffect(() => {
-    fetch("http://127.0.0.1:5000/alunos")
+    fetch("https://sistema-de-gerenciamento-de-notas-backend.onrender.com/alunos")
       .then((res) => res.json())
       .then((data) => {
         setAlunos(data.alunos);
@@ -75,7 +79,7 @@ function App() {
     }
 
     // Enviar dados
-    fetch(`http://127.0.0.1:5000/alunos/${formData.id}`, {
+    fetch(`https://sistema-de-gerenciamento-de-notas-backend.onrender.com/alunos/${formData.id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -87,8 +91,16 @@ function App() {
       .then((res) => res.json())
       .then(() => {
         setSucesso("✅ Aluno salvo com sucesso!");
+
+        setFormData({
+          id: "",     
+          nome: "",
+          notas: ["", "", "", "", ""],
+          frequencia: "",
+        });
+        
         // Recarregar lista de alunos
-        fetch("http://127.0.0.1:5000/alunos")
+        fetch("https://sistema-de-gerenciamento-de-notas-backend.onrender.com/alunos")
           .then((res) => res.json())
           .then((data) => setAlunos(data.alunos));
       })
@@ -100,7 +112,7 @@ function App() {
     setAlerta("");
     setSucesso("");
 
-    fetch("http://127.0.0.1:5000/estatisticas")
+    fetch("https://sistema-de-gerenciamento-de-notas-backend.onrender.com/estatisticas")
       .then((res) => res.json())
       .then((data) => {
         if (data.erro) {
