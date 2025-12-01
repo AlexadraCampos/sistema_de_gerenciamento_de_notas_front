@@ -8,7 +8,7 @@ Front-end:
 * Api de integração
 
 
-# Backend 
+ Backend 
 
 * Framework Flaks
 * Python
@@ -17,7 +17,7 @@ Front-end:
 
 
 📸 Demostração
-![alt text](Demo-1.png)
+<img width="1080" height="1080" alt="gestão-notas" src="./public/img/Demo.png"/>
 
 
 ### Projeto
