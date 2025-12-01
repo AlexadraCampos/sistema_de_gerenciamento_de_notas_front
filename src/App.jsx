@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import "./styles/app.css";
 
+
 function App() {
   const [alunos, setAlunos] = useState([]);
   const [materias, setMaterias] = useState(["", "", "", "", ""]);
@@ -16,7 +17,7 @@ function App() {
 
   // Carregar alunos + disciplinas
   useEffect(() => {
-    fetch("http://192.168.3.110:5000/alunos")
+    fetch("https://sistema-de-gerenciamento-de-notas-backend.onrender.com/alunos")
       .then((res) => res.json())
       .then((data) => {
         setAlunos(data.alunos);
@@ -72,7 +73,7 @@ function App() {
     }
 
     // Enviar dados
-    fetch(`http://192.168.3.110:5000/alunos/${formData.id}`, {
+    fetch(`https://sistema-de-gerenciamento-de-notas-backend.onrender.com/alunos/${formData.id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -93,7 +94,7 @@ function App() {
         });
         
         // Recarregar lista de alunos
-        fetch("http://192.168.3.110:5000/alunos")
+        fetch("https://sistema-de-gerenciamento-de-notas-backend.onrender.com/alunos")
           .then((res) => res.json())
           .then((data) => setAlunos(data.alunos));
       })
@@ -105,7 +106,7 @@ function App() {
     setAlerta("");
     setSucesso("");
 
-    fetch("http://192.168.3.110:5000/estatisticas")
+    fetch("https://sistema-de-gerenciamento-de-notas-backend.onrender.com/estatisticas")
       .then((res) => res.json())
       .then((data) => {
         if (data.erro) {
