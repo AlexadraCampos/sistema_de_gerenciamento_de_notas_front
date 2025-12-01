@@ -17,6 +17,22 @@ Front-end:
 📸 Demostração
 ![alt text](Demo-1.png)
 
+
+### Projeto
+O Sistema de Nota e Frequência de Alunos foi desenvolvido para apoiar o professor Carlos no controle dos estudantes em disciplinas, com base em notas e frequência.
+Sobre o sistema:
+
+*	Alunos com frequência abaixo de 75%
+*	Lançamento de notas dos alunos
+*	Média dos alunos por disciplina
+*	Média geral dos alunos
+*	Alunos com média acima da média da turma
+
+
+Objetivo
+Facilitar o acompanhamento do desempenho acadêmico dos alunos.
+
+
 ## Como executar o projeto localmente
 
     git clone https://github.com/AlexadraCampos/sistema_de_gerenciamento_de_notas_front.git
@@ -45,6 +61,14 @@ Layout simples e funcional, voltado para uso educacional.
 Sistema focado em autenticação, registro de alunos e visualização de notas.
 
 Estrutura separada entre páginas, serviços e componentes para facilitar manutenção.
+
+
+### Decisões de Projeto
+*	Foi utilizado Python no backend por ser uma tecnologia robusta para cálculos e manipulação de dados.
+*	O React foi escolhido pela facilidade em criar interfaces dinâmicas e reativas.	
+*	O cálculo da média considera todas as disciplinas do aluno cadastradas.
+*	A consolidação de dados inclui filtros automáticos para destaque de indicadores críticos.
+
 
 
 
