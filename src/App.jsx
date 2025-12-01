@@ -21,7 +21,7 @@ function App() {
 
   // Carregar alunos + disciplinas
   useEffect(() => {
-    fetch("https://sistema-de-gerenciamento-de-notas-backend.onrender.com/alunos")
+    fetch("http://127.0.0.1:5000/alunos")
       .then((res) => res.json())
       .then((data) => {
         setAlunos(data.alunos);
@@ -78,7 +78,7 @@ function App() {
     }
 
     // Enviar dados
-    fetch(`https://sistema-de-gerenciamento-de-notas-backend.onrender.com/alunos/${formData.id}`, {
+    fetch(`http://127.0.0.1:5000/alunos/${formData.id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -99,7 +99,7 @@ function App() {
         });
         
         // Recarregar lista de alunos
-        fetch("https://sistema-de-gerenciamento-de-notas-backend.onrender.com/alunos")
+        fetch("http://127.0.0.1:5000/alunos")
           .then((res) => res.json())
           .then((data) => setAlunos(data.alunos));
       })
@@ -111,7 +111,7 @@ function App() {
     setAlerta("");
     setSucesso("");
 
-    fetch("https://sistema-de-gerenciamento-de-notas-backend.onrender.com/estatisticas")
+    fetch("http://127.0.0.1:5000/estatisticas")
       .then((res) => res.json())
       .then((data) => {
         if (data.erro) {
@@ -130,7 +130,7 @@ function App() {
       {alerta && <div className="alerta">{alerta}</div>}
       {sucesso && <div className="sucesso">{sucesso}</div>}
 
-      <label>ID do aluno:</label>
+      <label>ID do aluno (1, 2 ou 3)</label>
       <input
         type="number"
         name="id"

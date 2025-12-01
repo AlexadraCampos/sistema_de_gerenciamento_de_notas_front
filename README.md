@@ -17,8 +17,6 @@ Front-end:
 📸 Demostração
 ![alt text](Demo.png)
 
-# Acesse o site em: https://sistemadegerenciamentodenotas.netlify.app/
-
 ## Como executar o projeto localmente
 
     git clone https://github.com/AlexadraCampos/sistema_de_gerenciamento_de_notas_front.git
