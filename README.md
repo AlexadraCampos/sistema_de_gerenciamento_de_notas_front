@@ -6,7 +6,7 @@ Front-end:
 * Javascript
 * CSS / Estilização Própria
 * Api de integração
-* Hospedagem (Netlify / Vercel)
+
 
 # Backend 
 
@@ -33,7 +33,7 @@ Execute o projeto:
 
 ### 🔗 Integração com o Backend
 
-    O frontend se comunica com o backend Flask hospedado em: https://github.com/AlexadraCampos/sistema-de-gerenciamento-de-notas-backend
+  O frontend se comunica com o backend Flask que se encontra em: https://github.com/AlexadraCampos/sistema-de-gerenciamento-de-notas-backend
 
 
 Sobre o codigo:
