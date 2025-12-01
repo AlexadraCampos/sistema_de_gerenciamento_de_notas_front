@@ -15,7 +15,7 @@ Front-end:
 
 
 📸 Demostração
-![alt text](Demo.png)
+![alt text](Demo-1.png)
 
 ## Como executar o projeto localmente
 
