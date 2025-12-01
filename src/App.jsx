@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
 import "./styles/app.css";
 
-
-
 function App() {
   const [alunos, setAlunos] = useState([]);
   const [materias, setMaterias] = useState(["", "", "", "", ""]);
@@ -16,12 +14,9 @@ function App() {
   const [alerta, setAlerta] = useState("");
   const [sucesso, setSucesso] = useState("");
 
-
-  
-
   // Carregar alunos + disciplinas
   useEffect(() => {
-    fetch("http://127.0.0.1:5000/alunos")
+    fetch("http://192.168.3.110:5000/alunos")
       .then((res) => res.json())
       .then((data) => {
         setAlunos(data.alunos);
@@ -44,7 +39,6 @@ function App() {
     setFormData({ ...formData, notas: novas });
   };
 
-  
   // Validar e enviar dados (PUT)
   const salvarAluno = () => {
     // Limpar mensagens anteriores
@@ -78,7 +72,7 @@ function App() {
     }
 
     // Enviar dados
-    fetch(`http://127.0.0.1:5000/alunos/${formData.id}`, {
+    fetch(`http://192.168.3.110:5000/alunos/${formData.id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -99,7 +93,7 @@ function App() {
         });
         
         // Recarregar lista de alunos
-        fetch("http://127.0.0.1:5000/alunos")
+        fetch("http://192.168.3.110:5000/alunos")
           .then((res) => res.json())
           .then((data) => setAlunos(data.alunos));
       })
@@ -111,7 +105,7 @@ function App() {
     setAlerta("");
     setSucesso("");
 
-    fetch("http://127.0.0.1:5000/estatisticas")
+    fetch("http://192.168.3.110:5000/estatisticas")
       .then((res) => res.json())
       .then((data) => {
         if (data.erro) {
@@ -150,7 +144,7 @@ function App() {
       <h3>Matérias e Notas</h3>
 
       <div className="lista-materias">
-        {materias.map((materia, index) => (
+        {materias?.map((materia, index) => (
           <div key={index} className="linha-materia">
             <span className="nome-materia">{materia}</span>
 
@@ -189,7 +183,7 @@ function App() {
           <h3>Geração final informações consolidadas:</h3>
 
           {/* Mostrar lista dos alunos no formato EXATO */}
-          {alunos.map((a, i) => (
+          {alunos?.map((a, i) => (
             <p key={i}>
               {a.nome} – {a.notas.join(" – ")} – {a.frequencia}%
             </p>
@@ -197,7 +191,7 @@ function App() {
 
           <p>
             <strong>Média da turma em cada disciplina:</strong>
-            {estatisticas.media_por_disciplina
+            {estatisticas?.media_por_disciplina
               .map((d) => d.media.toFixed(2))
               .join(" - ")}
           </p>
