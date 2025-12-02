@@ -5,7 +5,7 @@ Front-end:
 * React
 * Javascript
 * CSS / Estilização Própria
-* Api de integração
+* Hospedagem no Nettlify
 
 
  Backend 

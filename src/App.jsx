@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import "./styles/app.css";
 
-
 function App() {
   const [alunos, setAlunos] = useState([]);
-  const [materias, setMaterias] = useState(["", "", "", "", ""]);
+  const [loading, setLoading] = useState(false);
+  const [alertaServidor, setAlertaServidor] = useState("");
   const [formData, setFormData] = useState({
     id: "",
     nome: "",
@@ -14,16 +14,43 @@ function App() {
   const [estatisticas, setEstatisticas] = useState(null);
   const [alerta, setAlerta] = useState("");
   const [sucesso, setSucesso] = useState("");
-
+  const [materias, setMaterias] = useState([
+  "Matemática",
+  "Português",
+  "História",
+  "Geografia",
+  "Ciências"
+]);
+  
   // Carregar alunos + disciplinas
-  useEffect(() => {
-    fetch("https://sistema-de-gerenciamento-de-notas-backend.onrender.com/alunos")
-      .then((res) => res.json())
-      .then((data) => {
-        setAlunos(data.alunos);
-        setMaterias(data.disciplinas);
+useEffect(() => {
+  async function carregarDados() {
+    setLoading(true);
+    setAlertaServidor("");
+
+    try {
+      const res = await fetch("https://sistema-de-gerenciamento-de-notas-backend.onrender.com/alunos", {
+        method: "GET",
       });
-  }, []);
+
+      if (!res.ok) {
+        throw new Error("Servidor não respondeu corretamente");
+      }
+
+      const data = await res.json();
+
+      if (data.alunos) setAlunos(data.alunos);
+      if (data.disciplinas) setMaterias(data.disciplinas);
+
+    } catch (error) {
+      setAlertaServidor("⚠️ Servidor dormindo ou indisponível! Aguarde alguns segundos e tente novamente.");
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  carregarDados();
+}, []);
 
   // Atualizar campo do formulário
   const handleChange = (e) => {
@@ -121,7 +148,8 @@ function App() {
   return (
     <div className="container">
       <h2>👤 Cadastrar Informações do Aluno</h2>
-
+      {loading && <div className="loading">⏳ Conectando ao servidor...</div>}
+      {alertaServidor && <div className="alerta">{alertaServidor}</div>}
       {alerta && <div className="alerta">{alerta}</div>}
       {sucesso && <div className="sucesso">{sucesso}</div>}
 
